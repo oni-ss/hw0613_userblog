@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+{%block contents%}
+<head>
+    <style>
+        @font-face { font-family: 'netmarbleB'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleB.woff') format('woff'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'netmarbleL'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleL.woff') format('woff'); font-weight: normal; font-style: normal; }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+</head>
+
+
+<body>
+<div class="container">
+<h1>LogIn</h1>
+    <form method="POST" action="{%url 'login'%}">
+        {%csrf_token%}
+        Username : <br>
+        <input name="username" type="text" value=""><br>
+        Password : <br>
+        <input name="password" type="password" value=""><br><br>
+        <input class="btn btn-primary" type="submit" value="LogIn">
+    </form>
+</div>
+
+
+
+</body>
+{%endblock%}
+</html>

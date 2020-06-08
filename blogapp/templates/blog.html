@@ -1,0 +1,59 @@
+{%extends 'base.html'%}
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+{%block contents%}
+<head>
+    <style>
+        @font-face { font-family: 'netmarbleB'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleB.woff') format('woff'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'netmarbleL'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleL.woff') format('woff'); font-weight: normal; font-style: normal; }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>시온이의 음악 추천</title>
+</head>
+
+
+<body>
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                  <img class="card-img-top" src="{%static 'mariahcarey_emc2.png'%}" height=300 width=250 alt="album image" style="padding: 20px 20px 0 20px;">
+                  <div class="card-body">
+                    <h4 style="font-family: 'netmarbleB';">Mariah Carey - Bye Bye</h4>
+                    <h6 style="font-family: 'netmarbleL';">May 29, 2020, 1:38 a.m.</h6>
+                    <hr><p class="card-text" style="font-family: 'netmarbleL';">앨범 : E=MC²<br>발매일 : 2008.04.15<br>장르 : R&B/Soul</p>
+                  </div>
+                </div>
+              </div>
+        
+            {%for blog in blogss%}
+            <div class="col-md-4">
+                <div class="card mb-4 shadow-sm">
+                {%if blog.image%}
+                <img class="card-img-top" src="{{blog.image.url}}" alt="Album image" width=300 height=300 style="padding: 20px 20px 0 20px;">
+                {%endif%}
+                <div class="card-body">
+                    <a href="{%url 'detail' blog.id%}"><h4 style="font-family: 'netmarbleB'; color:black;">{{blog.title}}</h4></a>
+                    <h6 style="font-family: 'netmarbleL';">{{blog.pub_date}}</h6>
+                    <hr><p class="card-text" style="font-family: 'netmarbleL';">{{blog.summary|linebreaksbr}}<br>...</p>
+                    <a href="{%url 'update' blog.id%}">수정</a>
+                    <a href="{%url 'delete' blog.id%}">삭제</a>
+                </div>
+                </div>
+            </div>
+            {% endfor %}
+      </div>
+      <a href="{%url 'create'%}"><button type="button" class="btn btn-light" style="font-family: 'netmarbleL'; border:medium solid #dbe2c7;">나도 음악 추천하기</button></a>
+    </div>
+  </div>
+
+</body>
+{%endblock%}
+</html>
+
+

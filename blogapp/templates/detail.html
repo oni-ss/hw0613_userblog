@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+{%block contents%}
+<head>
+    <style>
+        @font-face { font-family: 'netmarbleB'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleB.woff') format('woff'); font-weight: normal; font-style: normal; }
+        @font-face { font-family: 'netmarbleL'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleL.woff') format('woff'); font-weight: normal; font-style: normal; }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음악 추천 세부사항</title>
+</head>
+
+
+<body>
+<div class="container" style="font-family: 'netmarbleB';">
+    <h2>{{blogdet.title}}</h2><br>
+    {%if blogdet.image%}
+    <img src="{{blogdet.image.url}}" height="300"><br><br>
+    {%endif%}
+    <p style="font-family: 'netmarbleL';">{{blogdet.pub_date}}</p>
+    <p style="font-family: 'netmarbleL'; font-size:19px;">{{blogdet.body|linebreaksbr}}</p><br>
+    <a href="{%url 'update' blogdet.id%}" style="font-family: 'netmarbleL';">수정</a>
+    <a href="{%url 'delete' blogdet.id%}" style="font-family: 'netmarbleL';">삭제</a>
+</div>
+</body>
+{%endblock%}
+</html>

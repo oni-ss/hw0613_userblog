@@ -1,0 +1,30 @@
+{%extends 'base.html'%}
+{%load static%}
+
+<!DOCTYPE html>
+<html lang="en">
+{%block contents%}
+<head>
+    <style>
+        @font-face { font-family: 'netmarbleL'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_four@1.1/netmarbleL.woff') format('woff'); font-weight: normal; font-style: normal; }
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>음악 추천하기</title>
+</head>
+
+<body>
+<div class="container">
+    <form method="POST" action="{%url 'update' blog.id%}" enctype="multipart/form-data" style="font-family: 'netmarbleL';">
+        {%csrf_token%}
+        Title : <input class="form-control" type="text" name="t" value="{{blog.title}}"><br>
+        Image : <br><input type="file" name="p"><br><br>
+        Body : <br> <textarea class="form-control" rows="10" name="b">{{blog.body}}</textarea><br>
+        <br>
+        <input type="submit" value="수정">
+    </form>
+</div>
+</body>
+{%endblock%}
+</html>
