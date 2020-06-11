@@ -25,6 +25,19 @@
         <input type="submit" value="추천하기">
     </form>
 </div>
+
+<!--forms.py 이용-->
+<!--
+<div class="container">
+    <form method='POST'>
+        {%csrf_token%}
+        <table>
+            {{form.as_table}}
+        </table><br>
+        <input class="btn btn-dark" type="submit" value="추천하기">
+    </form>
+</div>
+-->
 </body>
 {%endblock%}
 </html>
