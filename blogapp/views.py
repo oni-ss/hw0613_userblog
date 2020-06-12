@@ -50,7 +50,6 @@ def detail(request, pk):
 
 
 ### forms.py 이용 
-'''
 def blogpost(request):
     if request.method =='POST':
         form = BlogPost(request.POST)
@@ -61,5 +60,4 @@ def blogpost(request):
             return redirect('home')
     else:
         form = BlogPost()
-        return render(request,'new.html',{'form':form})
-'''
+        return render(request,'formnew.html',{'form':form})

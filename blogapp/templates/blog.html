@@ -17,46 +17,56 @@
 
 
 <body>
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                  <img class="card-img-top" src="{%static 'mariahcarey_emc2.png'%}" height=300 width=250 alt="album image" style="padding: 20px 20px 0 20px;">
-                  <div class="card-body">
-                    <h4 style="font-family: 'netmarbleB';">Mariah Carey - Bye Bye</h4>
-                    <h6 style="font-family: 'netmarbleL';">May 29, 2020, 1:38 a.m.</h6>
-                    <hr><p class="card-text" style="font-family: 'netmarbleL';">앨범 : E=MC²<br>발매일 : 2008.04.15<br>장르 : R&B/Soul</p>
-                  </div>
-                </div>
-              </div>
-        
-            {%for blog in posts%}
-            <div class="col-md-4">
-                <div class="card mb-4 shadow-sm">
-                {%if blog.image%}
-                <img class="card-img-top" src="{{blog.image.url}}" alt="Album image" width=300 height=300 style="padding: 20px 20px 0 20px;">
-                {%endif%}
-                <div class="card-body">
-                    <a href="{%url 'detail' blog.id%}"><h4 style="font-family: 'netmarbleB'; color:black;">{{blog.title}}</h4></a>
-                    <h6 style="font-family: 'netmarbleL';">{{blog.pub_date}}</h6>
-                    <hr><p class="card-text" style="font-family: 'netmarbleL';">{{blog.summary|linebreaksbr}}<br>...</p>
-                    <a href="{%url 'update' blog.id%}">수정</a>
-                    <a href="{%url 'delete' blog.id%}">삭제</a>
-                </div>
-                </div>
-            </div>
-            {% endfor %}
+<div class="container">
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-4">
+      <img src="{%static 'mariahcarey_emc2.png'%}" alt="album image" width=270 height=270 style="padding:10px;">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h4 style="font-family: 'netmarbleB';">Mariah Carey - Bye Bye</h4>
+        <h6 style="font-family: 'netmarbleL';">May 29, 2020, 1:38 a.m.</h6>
+        <hr><p class="card-text" style="font-family: 'netmarbleL';">앨범 : E=MC²<br>발매일 : 2008.04.15<br>장르 : R&B/Soul</p>
       </div>
-      <a href="{%url 'create'%}"><button type="button" class="btn btn-light" style="font-family: 'netmarbleL'; border:medium solid #dbe2c7;">나도 음악 추천하기</button></a>
+    </div>
+  </div>
+  </div>
+
+  {%for blog in posts%}
+  <div class="card mb-3">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        {%if blog.image%}
+        <img src="{{blog.image.url}}" alt="Album image" width=270 height=270 style="padding:10px;">
+        {%else%}
+        <p style="font-family: 'netmarbleL'; padding:75px 0 0 50px;">사진 없이 추천한 글입니다.<br>앨범 사진을 추가해주세요.</p>
+        {%endif%}
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <a href="{%url 'detail' blog.id%}"><h4 style="font-family: 'netmarbleB'; color:black;">{{blog.title}}</h4></a>
+          <h6 style="font-family: 'netmarbleL';">{{blog.pub_date}}</h6>
+          <hr><p class="card-text" style="font-family: 'netmarbleL';">{{blog.summary|linebreaksbr}}<br>...</p>
+          <a href="{%url 'update' blog.id%}">수정</a>
+          <a href="{%url 'delete' blog.id%}">삭제</a>
+        </div>
+      </div>
+    </div>
+    </div>
+    {% endfor %}
+      <a href="{%url 'create'%}"><button type="button" class="btn btn-light" style="font-family: 'netmarbleL'; border:medium solid #dbe2c7; margin-right:15px;">나도 음악 추천하기</button></a>
+      <a href="{%url 'create2'%}"><button type="button" class="btn btn-light" style="font-family: 'netmarbleL'; border:medium solid #dbe2c7;">사진 없이 음악 추천하기</button></a>
     </div>
 </div>
 
+
+<br><br>
 <!--Pagination-->
-<div class="container">
+<div class="container" style="font-family: 'netmarbleL';">
   {%if posts.has_previous%}
-  <a href="?page=1">First</a>
-  <a href="?page={{posts.previous_page_number}}">Previous</a>
+  <a href="?page=1"><button type="button" class="btn btn-light" style="margin:0 10px 0 0;">First</button></a>
+  <a href="?page={{posts.previous_page_number}}"><button type="button" class="btn btn-light" style="margin:0 10px;">Previous</button></a>
   {%endif%}
 
   <span>{{posts.number}}</span>
@@ -64,8 +74,8 @@
   <span>{{posts.paginator.num_pages}}</span>
 
   {%if posts.has_next%}
-  <a href="?page={{posts.next_page_number}}">Next</a>
-  <a href="?page={{posts.paginator.num_pages}}">Last</a>
+  <a href="?page={{posts.next_page_number}}"><button type="button" class="btn btn-light" style="margin:0 10px;">Next</button></a>
+  <a href="?page={{posts.paginator.num_pages}}"><button type="button" class="btn btn-light" style="margin:0 10px;">Last</button></a>
   {%endif%}
 </div>
 </body>
