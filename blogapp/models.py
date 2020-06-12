@@ -10,4 +10,4 @@ class Blog(models.Model):
         return self.title
 
     def summary(self):
-        return self.body[:200]
+        return self.body[:45]
